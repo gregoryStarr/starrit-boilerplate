@@ -9,37 +9,13 @@ class Video extends Component{
         console.log("Constructed")
     }
 
-    componentDidMount(){
-        this.videoElementReference.play()
-        /*
-
-
-                // Pause the video when the slider handle is being dragged
-                seekBar.addEventListener("mousedown", function() {
-                    video.pause();
-                });
-
-        // Play the video when the slider handle is dropped
-                seekBar.addEventListener("mouseup", function() {
-                    video.play();
-                });
-
-
-                // Event listener for the volume bar
-                volumeBar.addEventListener("change", function() {
-                    // Update the video volume
-                    video.volume = volumeBar.value;
-                });*/
-    }
-
-
     componentWillUpdate(next){
         //debugger
         let playPromise = null;
         if( next.isPlaying && this.videoElementReference.paused){
             playPromise = this.videoElementReference.play();
-        }else if(!playPromise && !this.videoElementReference.paused){
-                this.videoElementReference.pause();
+        }else if(!playPromise && !this.videoElementReference.paused && !next.isPlaying && this.props.isPlaying){
+            this.videoElementReference.pause();
         }
     }
 
@@ -53,11 +29,13 @@ class Video extends Component{
             onStop,
             onPause,
             dispatch,
-            showControls} = this.props;
+            showControls,
+            loop
+        } = this.props;
 
         return (
-            <section>
-                <video className="Video" ref={(videoEl) => { this.videoElementReference = videoEl; }}>
+            <section className="VideoContainer" >
+                <video className="Video" loop={loop} ref={(videoEl) => { this.videoElementReference = videoEl; }}>
                     <source src={videoSource} type={type} />
                     Your browser does not support the video tag.
                 </video>

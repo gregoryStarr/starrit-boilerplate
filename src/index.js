@@ -30,5 +30,5 @@ ReactDOM.render(
         <Provider store={store} ><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();
-store.dispatch({type:"SET_VIDEO_SOURCE", videoSource:'http://starrit.io/assets/video/lightingFX.mp4'})
+store.dispatch({type:"SET_VIDEO_SOURCE", videoSource:'http://localhost:3000/video'})
 store.dispatch({type:"VIDEO_PLAY"})

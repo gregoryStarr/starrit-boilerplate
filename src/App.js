@@ -23,7 +23,6 @@ const mapDispatchToProps = dispatch => {
         }
     };
 
-
 class App extends Component {
   render() {
     return (
@@ -31,7 +30,7 @@ class App extends Component {
         <header className="App-header">
           VideoBox - A Video Challenge...
         </header>
-          <Video type="video/mp4" controls="false" {...this.props} loop>
+          <Video type="video/mp4" width="460px" height="320" controls="false" {...this.props} loop>
           </Video>
       </div>
     );

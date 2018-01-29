@@ -15,7 +15,7 @@ export const playerReducers = (state = {}, action) => {
             newState.videoSource = src;
             return newState;
         case PAUSE:
-            newState.isPlaying = !state.isPlaying;
+            newState.isPlaying = false;
             return newState
         case STOP:
             newState.isPlaying = false;
