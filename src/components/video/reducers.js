@@ -1,4 +1,4 @@
-import {PLAY, PAUSE, STOP, SETSOURCE, GETSOURCE} from "./actionTypes";
+import {PLAY, PAUSE, STOP, SETSOURCE, GETSOURCE, FETCH} from "./actionTypes";
 
 
 export const playerReducers = (state = {}, action) => {
@@ -22,6 +22,9 @@ export const playerReducers = (state = {}, action) => {
             return newState;
         case PLAY:
             newState.isPlaying = true;
+            return newState;
+        case FETCH:
+            newState.payload = action.payload;
             return newState;
         default:
             return state

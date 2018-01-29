@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Video from "./components/video"
 //import {bindActionCreators} from "redux/";
-import {pauseVideo, playVideo, stopVideo} from "./components/video/actions";
+import {pauseVideo, playVideo, stopVideo,getRepos} from "./components/video/actions";
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => {
@@ -16,10 +16,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        dispatch,
-        onStart: playVideo,
-        onStop: stopVideo,
-        onPause:pauseVideo
+            dispatch,
+            onStart: playVideo,
+            onStop: stopVideo,
+            onPause:pauseVideo,
+            getRepos: getRepos
         }
     };
 

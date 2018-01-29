@@ -7,6 +7,9 @@ import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from "redux";
 import {playerReducers} from "./components/video/reducers";
 import { composeWithDevTools } from 'redux-devtools-extension';
+import {loggerMiddleware} from "./middleware";
+import thunk from 'redux-thunk'
+
 const initialState = {
     videoSource:'',
     isPlaying:false,
@@ -15,14 +18,12 @@ const initialState = {
 }
 
 
-const logger = store => dispatch => action => {
-    return dispatch(action)
-}
+
 
 const store = createStore(
     playerReducers,
     initialState,composeWithDevTools(
-        applyMiddleware(logger),
+        applyMiddleware(loggerMiddleware, thunk),
         // other store enhancers if any
     ))
 
