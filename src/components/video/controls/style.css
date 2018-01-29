@@ -1,0 +1,15 @@
+.ButtonBase{
+    display:flex;
+    padding:8px;
+    margin:2px;
+    background: #a9a9a9;
+    color: #222222;
+    cursor: pointer;
+}
+
+.ButtonBase:hover{
+    color: #a9a9a9;
+    background: #222222;
+    cursor: grab;
+}
+

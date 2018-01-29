@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Video from "./components/video"
+//import {bindActionCreators} from "redux/";
+import {pauseVideo, playVideo, stopVideo} from "./components/video/actions";
+import {connect} from 'react-redux'
+
+const mapStateToProps = (state) => {
+    return {
+        videoSource: state.videoSource,
+        isPlaying: state.isPlaying,
+        isPaused: state.isPaused,
+        showControls:state.showControls
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        dispatch,
+        onStart: playVideo,
+        onStop: stopVideo,
+        onPause:pauseVideo
+        }
+    };
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          VideoBox - A Video Challenge...
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <Video type="video/mp4" controls="false" {...this.props} loop>
+          </Video>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
